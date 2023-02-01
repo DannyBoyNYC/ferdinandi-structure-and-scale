@@ -25,10 +25,10 @@
     <script>
         let TreasureChest = (function () {
 
-            function Constructor(gold = 0, silver = 0, bronze = 0) {
+            function Constructor(gold = 0, silver = 0, copper = 0) {
                 this.gold = gold;
                 this.silver = silver;
-                this.bronze = bronze;
+                this.copper = copper;
             }
 
             Constructor.prototype.addGold = function (gold) {
@@ -41,13 +41,13 @@
                 return this.silver;
             }
 
-            Constructor.prototype.addBronze = function (bronze) {
-                this.bronze += bronze;
-                return this.bronze;
+            Constructor.prototype.addcopper = function (copper) {
+                this.copper += copper;
+                return this.copper;
             }
 
             Constructor.prototype.getLoot = function () {
-                return this.gold + this.silver + this.bronze;
+                return this.gold + this.silver + this.copper;
             }
 
             return Constructor;
@@ -62,11 +62,11 @@
         console.log('firstMate', firstMate)
         console.log(firstMate.silver)
 
-        let bronze = captain.bronze;
+        let copper = captain.copper;
         let silver = captain.silver;
         let gold = captain.gold;
         let total = captain.getLoot();
-        console.log(bronze, silver, gold, total)
+        console.log(copper, silver, gold, total)
     </script>
 </body>
 
