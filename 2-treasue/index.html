@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Treasure Chest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style type="text/css">
+        body {
+            margin: 0 auto;
+            max-width: 40em;
+            width: 88%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Treasure Chest</h1>
+
+    <p>All of the magic here happens in the console.</p>
+
+
+    <script>
+        let TreasureChest = (function () {
+
+            function Constructor(gold = 0, silver = 0, bronze = 0) {
+                this.gold = gold;
+                this.silver = silver;
+                this.bronze = bronze;
+            }
+
+            Constructor.prototype.addGold = function (gold) {
+                this.gold += gold;
+                return this.gold;
+            }
+
+            Constructor.prototype.addSilver = function (silver) {
+                this.silver += silver;
+                return this.silver;
+            }
+
+            Constructor.prototype.addBronze = function (bronze) {
+                this.bronze += bronze;
+                return this.bronze;
+            }
+
+            Constructor.prototype.getLoot = function () {
+                return this.gold + this.silver + this.bronze;
+            }
+
+            return Constructor;
+        })()
+
+        let captain = new TreasureChest();
+        let firstMate = new TreasureChest();
+        captain.addGold(100);
+        captain.addSilver(20)
+        console.log('captain', captain)
+        console.log(captain.gold)
+        console.log('firstMate', firstMate)
+        console.log(firstMate.silver)
+
+        let bronze = captain.bronze;
+        let silver = captain.silver;
+        let gold = captain.gold;
+        let total = captain.getLoot();
+        console.log(bronze, silver, gold, total)
+    </script>
+</body>
+
+</html>
