@@ -12,6 +12,27 @@
             max-width: 40em;
             width: 88%;
         }
+
+        ul {
+            display: flex;
+            gap: 8px;
+        }
+
+        li {
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* subsequent-sibling combinator */
+        li:has(~ li:hover),
+        li:hover~li {
+            opacity: 0.3;
+        }
+
+        @supports(selector(:has(p))) {
+            /* Supported! */
+        }
     </style>
 </head>
 
@@ -20,6 +41,18 @@
     <h1>Treasure Chest</h1>
 
     <p>All of the magic here happens in the console.</p>
+
+    <p>The CSS :has selector helps you select elements that contain elements that match the selector you pass into the
+        :has() function. It's essentially a “parent” selector. https://css-tricks.com/the-css-has-selector/
+
+    <ul>
+        <li>NBA</li>
+        <li>NFL</li>
+        <li>NCAAF</li>
+        <li>MLB</li>
+        <li>NCAAM</li>
+        <li>NHL</li>
+    </ul>
 
 
     <script>
