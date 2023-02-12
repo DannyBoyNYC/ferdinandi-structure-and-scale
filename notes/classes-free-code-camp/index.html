@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>JavaScript Classes</h1>
+    <p>
+      A tutorial from
+      <a href="https://www.youtube.com/watch?v=2ZphE5HcQPQ"
+        >Free Code Camp on You Tube</a
+      >
+      with additional elementss by me.
+    </p>
+    <p>TODO: search for JS Object Oriented Programming as well.</p>
+    <h2>DOM Generated from Instances</h2>
+    <div class="generated"></div>
+    <div class="attached"></div>
+
+    <h2>Getters and Setters</h2>
+    <p>
+      - define methods on a class which are then used as if they were properties
+    </p>
+    <div class="generated-square"></div>
+
+    <script>
+      class Square {
+        constructor(_width, _color) {
+          this.width = _width;
+          this.height = _width;
+          this.color = _color;
+        }
+        // getter
+        get area() {
+          return this.width * this.height;
+        }
+        // setter
+        set area(area) {
+          this.width = Math.sqrt(area); // e.g. 5 for 25
+          this.height = this.width;
+        }
+        // set color(color) {
+        //   this.color = color;
+        // }
+      }
+
+      let square1 = new Square(50, 'purple');
+      // no round brackets (calling the method) required because it behaves as a property
+      console.log('Original square area ', square1.area);
+      // note below: no calling again, just setting the value
+      square1.area = 465;
+      square1.color = 'pink';
+      console.log('Square area ', square1.area);
+      document.querySelector(
+        '.generated-square',
+      ).innerHTML = `<div style="width: ${square1.area}px; height: ${square1.area}px; background: ${square1.color}">Area: ${square1.area}</div>`;
+    </script>
+    <script src="instances.js"></script>
+  </body>
+</html>
