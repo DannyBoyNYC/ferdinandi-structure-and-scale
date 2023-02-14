@@ -37,14 +37,14 @@
         get area() {
           return this.width * this.height;
         }
-        // setter
+        // setters
         set area(area) {
           this.width = Math.sqrt(area); // e.g. 5 for 25
           this.height = this.width;
         }
-        set color(color) {
-          this.color = color;
-        }
+        // set color(color) {
+        //   this.color = color;
+        // }
       }
 
       let square1 = new Square(50, 'purple');
@@ -58,6 +58,6 @@
         '.generated-square',
       ).innerHTML = `<div style="width: ${square1.area}px; height: ${square1.area}px; background: ${square1.color}">Area: ${square1.area}</div>`;
     </script>
-    <script src="instances.js"></script>
+    <!-- <script src="instances.js"></script> -->
   </body>
 </html>
