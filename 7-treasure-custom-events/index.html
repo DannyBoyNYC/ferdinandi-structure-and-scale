@@ -80,7 +80,7 @@
         addBronze(n) {
           this.#bronze += n;
           // Emit a custom event
-          this.#emit('treasure:bronze', { bronze: this.#bronze });
+          this.#emit('treasure:bronze', this);
           return this;
         }
 
@@ -90,7 +90,7 @@
          */
         addSilver(n) {
           this.#silver += n;
-          this.#emit('treasure:silver', { silver: this.#silver });
+          this.#emit('treasure:silver', this);
           return this;
         }
 
@@ -100,7 +100,7 @@
          */
         addGold(n) {
           this.#gold += n;
-          this.#emit('treasure:gold', { gold: this.#gold });
+          this.#emit('treasure:gold', this);
           return this;
         }
 
@@ -182,13 +182,35 @@
       }
 
       // Listen for custom event
-      document.addEventListener('treasure:gold', function (event) {
-        console.log('Gold was added to your treasure chest');
-      });
+      // document.addEventListener('treasure:gold', function (event) {
+      //   console.log('Gold was added to your treasure chest');
+      // });
+      document.addEventListener('treasure:gold', saveLoot);
+      document.addEventListener('treasure:silver', saveLoot);
+      document.addEventListener('treasure:bronze', saveLoot);
 
       // Create an instance and add gold
       let captain = new TreasureChest();
       captain.addGold(42);
+
+      /**
+       * Save treasure to localStorage
+       * @param  {Event} event The event object
+       */
+      function saveLoot(event) {
+        console.log('RAN', event);
+        // Create the treasure object
+        let treasure = {
+          gold: event.detail.getGold(),
+          silver: event.detail.getSilver(),
+          bronze: event.detail.getBronze(),
+        };
+
+        // Save it to localStorage
+        localStorage.setItem('me-treasure', JSON.stringify(treasure));
+      }
+
+      // Listen for treasure events
     </script>
   </body>
 </html>
