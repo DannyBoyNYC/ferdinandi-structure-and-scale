@@ -1,0 +1,19 @@
+{
+  "name": "11-seven-seas-rollup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "rollup": "rollup --config --watch",
+    "serve": "browser-sync start --server 'dist'",
+    "start": "npm run serve | npm run rollup"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.28.3",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup": "^3.18.0"
+  }
+}
